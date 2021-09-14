@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 interface UserSearchProps {}
 
@@ -18,8 +18,17 @@ const users = [
 ];
 
 export const UserSearch: React.FC<UserSearchProps> = () => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const [name, setName] = useState("");
   const [user, setUser] = useState<{ name: string; age: number } | undefined>();
+
+  useEffect(() => {
+    if (!inputRef.current) {
+      return;
+    }
+    inputRef.current.focus();
+  }, []);
+
   const onClick = () => {
     const foundUser = users.find((user) => {
       return user.name === name;
@@ -29,8 +38,9 @@ export const UserSearch: React.FC<UserSearchProps> = () => {
 
   return (
     <div>
-      User Serach
+      User Search
       <input
+        ref={inputRef}
         value={name}
         onChange={(e) => setName(e.target.value)}
         placeholder="Enter name"
