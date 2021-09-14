@@ -17,7 +17,11 @@ export const GuestList: React.FC<GuestListProps> = () => {
           <li key={guest}>{guest}</li>
         ))}
       </ul>
-      <input value={name} onChange={(e) => setName(e.target.value)} />
+      <input
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Name of guest"
+      />
       <button onClick={onClick}>Add Guest</button>
     </div>
   );

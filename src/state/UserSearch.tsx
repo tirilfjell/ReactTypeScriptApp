@@ -30,7 +30,11 @@ export const UserSearch: React.FC<UserSearchProps> = () => {
   return (
     <div>
       User Serach
-      <input value={name} onChange={(e) => setName(e.target.value)} />
+      <input
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Enter name"
+      />
       <button onClick={onClick}>Find User</button>
       <div>
         {user && user.name}
